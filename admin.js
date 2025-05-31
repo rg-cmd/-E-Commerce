@@ -24,13 +24,13 @@ app.use((req, res, next) => {
 
 require('dotenv').config();
 require('./src/datasources/connection');
-const port = process.env.PORT || 7070;
+const port = process.env.adminPORT || 7171;
 const routes = require("./src/api");
 const adminroutes = require("./src/admin");
 app.use(cors());
 app.use(express.json());
-app.use(routes);
-// app.use(adminroutes);
+// app.use(routes);
+app.use(adminroutes);
 
 app.listen(port, () => {
     console.log(`server is running http://localhost:${port}`);
