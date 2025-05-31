@@ -119,11 +119,16 @@ exports.businessUplodeDocumentAdmin = async (req, res) => {
 exports.VIEW_SALOON = async (req, res) => {
     try {
         const data = await service.VIEW_SALOON(req)
+        console.log(data, '-----data')
         const user = req.user
         const city = await saloon.distinct("location.city")
         res.render("add_saloon/view_saloon", { user, data, query: req.query, city })
+
+
     } catch (error) {
         console.log(error)
+        // console.log("hyyyyyyyyyyyyyyyyy-------------------------");
+
     }
 }
 

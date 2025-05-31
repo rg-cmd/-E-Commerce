@@ -113,7 +113,7 @@ exports.VIEW_SALOON = async (req) => {
     //     'as': 'package'
     //   }
     // })
-    
+
     return await saloon.aggregate(pipeline)
   } catch (error) {
     console.log(error)

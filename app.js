@@ -14,6 +14,14 @@ app.use(session({ cookie: { maxAge: 60000000 }, resave: true, saveUninitialized:
 app.use(flash());
 app.use(cookiparser());
 app.use(express.urlencoded({ extended: true }));
+
+// Middleware to log each API hit
+app.use((req, res, next) => {
+    const now = new Date().toISOString();
+    console.log(`${req.method} ${req.originalUrl}`);
+    next();
+});
+
 require('dotenv').config();
 require('./src/datasources/connection');
 const port = process.env.PORT || 7070;
@@ -25,5 +33,5 @@ app.use(routes);
 app.use(adminroutes);
 
 app.listen(port, () => {
-    console.log(`server is running ${port}`);
+    console.log(`server is running http://localhost:${port}`);
 });
